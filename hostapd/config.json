@@ -1,0 +1,87 @@
+{
+  "name": "Hostapd",
+  "version": "1.0.6",
+  "slug": "hostapd",
+  "description": "Raspberry Pi as hotspot in homeassistant.io",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "url": "https://github.com/davidramosweb/hassio-addons/tree/master/hassio-hostapd",
+  "startup": "system",
+  "boot": "auto",
+  "host_network": true,
+  "apparmor": false,
+  "host_dbus": true,
+  "full_access": true,
+  "privileged": [
+    "NET_ADMIN",
+    "SYS_ADMIN",
+    "SYS_RAWIO",
+    "SYS_TIME",
+    "SYS_NICE"
+  ],
+  "devices": [
+    "/dev/mem:/dev/mem:rwm"
+  ],
+  "map": [
+    "config:rw",
+    "ssl:rw",
+    "addons:rw",
+    "share:rw",
+    "backup:rw"
+  ],
+  "timeout": 20,
+  "options": {
+    "ssid": "my_network",
+    "wpa_passphrase": "",
+    "channel": 149,
+    "address": "192.168.99.1",
+    "netmask": "255.255.255.0",
+    "broadcast_address": "192.168.99.254",
+    "default_lease": 86400,
+    "max_lease": 172800,
+    "domain": "null",
+    "dns": ["8.8.8.8", "8.8.4.4"],
+    "networks": [
+      {
+        "subnet": "192.168.99.0",
+        "netmask": "255.255.255.0",
+        "range_start": "192.168.99.100",
+        "range_end": "192.168.99.200",
+        "broadcast": "192.168.99.255",
+        "gateway": "192.168.99.1",
+        "interface": "wlan0"
+      }
+    ],
+    "hosts": [
+    ]
+  },
+  "schema": {
+    "ssid": "str",
+    "wpa_passphrase": "str",
+    "channel": "int",
+    "address": "str",
+    "netmask": "str",
+    "broadcast_address": "str",
+    "default_lease": "int",
+    "max_lease": "int",
+    "domain": "str",
+    "dns": ["str"],
+    "networks": [
+      {
+        "subnet": "str",
+        "netmask": "str",
+        "range_start": "str",
+        "range_end": "str",
+        "broadcast": "str",
+        "gateway": "str",
+        "interface": "str"
+      }
+    ],
+    "hosts": [
+      {
+        "mac": "str",
+        "name": "str",
+        "ip": "str"
+      }
+    ]
+  }
+} 
